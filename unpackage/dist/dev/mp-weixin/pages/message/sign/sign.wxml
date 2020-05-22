@@ -1,0 +1,1 @@
+<view class="container"><block wx:if="{{flag}}"><view data-event-opts="{{[['tap',[['getToken']]]]}}" class="sign" bindtap="__e"><view class="text">签到</view></view></block><block wx:if="{{!flag}}"><view class="success"><image src="../../../static/result/sModify.png"></image></view></block></view>

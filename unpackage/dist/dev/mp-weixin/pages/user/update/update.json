@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "预约修改",
+  "usingComponents": {
+    "ms-dropdown-menu": "/components/ms-dropdown/dropdown-menu",
+    "ms-dropdown-item": "/components/ms-dropdown/dropdown-item"
+  }
+}

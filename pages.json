@@ -1,0 +1,160 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		// {
+		//     "path" : "pages/user/test/test",
+		//     "style" : {
+		// 		"navigationBarTitleText": "个人中心"
+		// 	}
+		// },
+		{
+		    "path" : "pages/user/user",
+		    "style" : {
+				"navigationBarTitleText": "个人中心"
+			}
+		},
+		{
+			"path": "pages/index/index",
+			"style": {
+				"enablePullDownRefresh": true,
+				"navigationBarTitleText": "会议室预约"
+			}
+		}
+	    ,{
+            "path" : "pages/message/message",
+            "style" : {
+				"navigationBarTitleText": "消息"
+			}
+        }
+        
+        ,{
+            "path" : "pages/detail/detail",
+            "style" : {
+				"navigationBarTitleText": "会议室详情"
+			}
+        }
+        ,{
+            "path" : "pages/appointment/appointment",
+            "style" : {
+				"navigationBarTitleText": "会议室预约"
+			}
+        }
+		,{
+            "path" : "pages/results/fAppointment",
+            "style" : {
+				"navigationBarTitleText": "预约结果"
+			}
+        }
+		,{
+            "path" : "pages/results/sAppointment",
+            "style" : {
+				"navigationBarTitleText": "预约结果"
+			}
+        }
+		,{
+            "path" : "pages/results/sFeedback",
+            "style" : {
+				"navigationBarTitleText": "反馈结果"
+			}
+        }
+		,{
+            "path" : "pages/results/sModify",
+            "style" : {
+				"navigationBarTitleText": "修改结果"
+			}
+        }
+		,{
+            "path" : "pages/results/sUndo",
+            "style" : {
+				"navigationBarTitleText": "撤销结果"
+			}
+        }
+		
+        ,{
+            "path" : "pages/meeting/meeting",
+            "style" : {
+				"navigationBarTitleText": "我的会议"
+			}
+        } 
+		,{
+            "path" : "pages/user/edit",
+            "style" : {
+				"navigationBarTitleText": "编辑个人信息"
+			}
+        }
+        ,{
+            "path" : "pages/user/inReview/inReview",
+            "style" : {
+				"navigationBarTitleText": "审核中"
+			}
+        }
+        ,{
+            "path" : "pages/user/update/update",
+            "style" : {
+				"navigationBarTitleText": "预约修改"
+			}
+        }
+        ,{
+            "path" : "pages/user/toBeHold/toBeHold",
+            "style" : {
+				"navigationBarTitleText": "待开会"
+			}
+        }
+        ,{
+            "path" : "pages/user/history/history",
+            "style" : {
+				"navigationBarTitleText": "历史记录"
+			}
+        }
+        ,{
+            "path" : "pages/user/feedback/feedback",
+            "style" : {
+				"navigationBarTitleText": "反馈"
+			}
+        }
+        ,{
+            "path" : "pages/message/sign/sign",
+            "style" : {
+				"navigationBarTitleText": "签到中心"
+			}
+        }
+       
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#C0C4CC",
+		"selectedColor": "#fa436a",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/tab-home.png",
+				"selectedIconPath": "static/tab-home-current.png",
+				"text": "首页"
+			},
+			
+			{
+				"pagePath": "pages/meeting/meeting",
+				"iconPath": "static/tab-meeting.png",
+				"selectedIconPath": "static/tab-meeting-current.png",
+				"text": "我的会议"
+			},
+			{
+				"pagePath": "pages/message/message",
+				"iconPath": "static/tab-message.png",
+				"selectedIconPath": "static/tab-message-current.png",
+				"text": "消息"
+			},
+			{
+				"pagePath": "pages/user/user",
+				"iconPath": "static/tab-my.png",
+				"selectedIconPath": "static/tab-my-current.png",
+				"text": "我的"
+			}
+		]
+	}
+}

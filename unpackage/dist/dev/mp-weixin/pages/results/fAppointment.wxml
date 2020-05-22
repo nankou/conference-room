@@ -1,0 +1,1 @@
+<view class="container"><view class="Box"><view class="box"><image class="img" src="../../static/result/fApponitment.png"></image></view><view class="_br"></view><view class="box"><text class="text1">提交失败</text></view><view class="_br"></view><view class="box2"><text class="text2">提交失败，请重新提交预约</text></view><view class="_br"></view></view></view>

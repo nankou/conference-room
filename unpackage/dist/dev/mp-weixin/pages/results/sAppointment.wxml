@@ -1,0 +1,1 @@
+<view class="container"><view class="Box"><view class="box"><image class="img" src="../../static/result/sApponitment.png"></image></view><view class="_br"></view><view class="box"><text class="text1">等待处理</text></view><view class="_br"></view><view class="box2"><text class="text2">已提交申请，等待后台审核处理</text></view><view class="_br"></view></view></view>
