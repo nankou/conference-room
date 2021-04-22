@@ -96,9 +96,7 @@
 					console.log("显示饮水机")
 				}
 			}
-			console.log(this.isComputer);
 			this.time = option.startTime +'~'+option.endTime
-			
 		},
 		methods: {
 			

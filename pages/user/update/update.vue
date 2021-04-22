@@ -61,7 +61,6 @@
 			}
 		},
 		onLoad:function(option){//opthin为object类型，会序列化上页面传递的参数
-			console.log(option);//打印出上页面传递的参数
 			var that = this
 			var id = option.id
 			var meetingRoomId = option.meetingRoomId
@@ -69,8 +68,6 @@
 			var starttime = option.time
 			let timeArr = starttime.split(' ');
 			var date = timeArr[0]
-			console.log(date)
-			
 			uni.setStorage({
 				key:'date',
 				data:{
@@ -123,7 +120,6 @@
 			},
 			//请求接口
 			toUp(time,id,meetingRoomId,phone){
-				console.log(time)
 				var that = this;
 				console.log(time,id,meetingRoomId,phone,this.name ,this.content )
 				if(this.value1 == 0){
@@ -164,14 +160,14 @@
 						Authorization:that.token
 					},
 					success(res) {
-						var title = res.data.message
-						if(title == '请求成功'){
+						console.log(res)
+						if(res.data.message == '请求成功'){
 							uni.navigateTo({
 								url:'../../results/sModify'
 							})
 						}else{
 							uni.showToast({
-								title:title,
+								title:res.data.message ,
 								icon:'none'
 							})
 						}

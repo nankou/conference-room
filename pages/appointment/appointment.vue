@@ -10,10 +10,6 @@
 				<text class="text">会议名称</text>
 				<input class="nameValue" @input="nameInput" placeholder="请输入内容" placeholder-style="margin-left:10rpx"/>
 			</view>
-			<!-- <view class="user">
-				<text class="text">预约姓名</text>
-				<input class="userValue" @input="userInput"/>
-			</view> -->
 			<view class="phone">
 				<text class="text">联系电话</text>
 				<input class="phoneValue" @input="phoneInput" type="number"/>
@@ -37,7 +33,6 @@
 			}
 		},
 		onLoad:function(option){//option为object类型，会序列化上页面传递的参数
-			// console.log(option);//打印出上页面传递的参数
 			this.id = option.id
 			this.number = option.number
 			this.time = option.time
@@ -130,7 +125,6 @@
 		background-color: #e1efff;
 		height: 1200rpx;
 		margin: 0;
-		// padding-left: 130rpx; 
 		padding-top: 50rpx;
 		display: flex;
 		justify-content: center;

@@ -66,7 +66,6 @@
 						Authorization:that.token
 					},
 					success(res) {
-						console.log(res)
 						that.remind = res.data.data.remind
 						that.pass = res.data.data.pass
 						that.signIn = res.data.data.signIn

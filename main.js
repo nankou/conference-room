@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App'
+// Vue.prototype.myReqeust = './util/api.js'; 
 
 
 Vue.config.productionTip = false

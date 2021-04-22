@@ -34,7 +34,6 @@
 			if(this.meetingList.length < this.pageIndex*5){
 				this.isOver = true
 			}
-			console.log(this.meetingList.length)
 			this.pageIndex++
 			this.getHistory()
 		},
@@ -67,7 +66,6 @@
 						Authorization:that.token 
 					},
 					success(res) {
-						console.log(res.data.data.list)
 						that.meetingList = [...that.meetingList,...res.data.data.list]
 						if(that.meetingList.length == 0){
 							that.flag = false
@@ -77,8 +75,6 @@
 			},
 			//反馈
 			toFeedback(roomId){
-				console.log("会议室id为",roomId)
-				console.log(this.isRoom)
 				uni.navigateTo({
 					url:'../feedback/feedback?isRoom='+this.isRoom
 				})

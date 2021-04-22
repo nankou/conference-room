@@ -67,7 +67,6 @@
 					},
 					success(res) {
 						that.meetingList = [...that.meetingList,...res.data.data.list]
-						console.log(res)
 						if(that.meetingList.length > 5){
 							that.flag = true
 						}else if (that.meetingList.length == 0){
@@ -78,7 +77,6 @@
 			},
 			//会议详情
 			toDetail(id,item){
-				console.log("会议id为",id)
 				this.meetingName = item.meetingName
 				this.content = item.content
 				this.name = item.name

@@ -54,8 +54,6 @@
 			//撤销预约时间
 			undo(id){
 				var that = this;				
-				console.log(id)
-				console.log(that.token)
 				uni.request({
 					url:'http://112.74.86.165:8082/revocation',
 					method:'PUT',
@@ -95,7 +93,6 @@
 						Authorization:that.token
 					},
 					success(res) {
-						console.log(res)
 						that.reviewList = [...that.reviewList,...res.data.data.list]
 						if(that.reviewList.length == 0){
 							that.flag = false

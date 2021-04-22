@@ -1,6 +1,7 @@
 <template>
 	<view class="container">
 		<view class="personal">
+			<button @click="toadress()">点击跳转</button>
 			<view class="wxBox" v-if="flag">
 				<view class="imgBox">
 						<open-data type="userAvatarUrl" class="avatarUrl"></open-data>
@@ -51,6 +52,9 @@
 </template>
 
 <script>
+	import WXAPI from '../../wxapi/wxapi.js'
+	import AUTH from '../../wxapi/auth.js'
+	
 	export default {
 		data() {
 			return {
@@ -61,22 +65,27 @@
 			}
 		},
 		onLoad() {
+			
+			//判断登录态是否过期
+			AUTH.checkHasLogined().then(isLogined => {
+				this.flag = isLogined
+			      if (isLogined) {
+					  console.log(isLogined)
+			      }
+				  else{
+					  console.log("未登录")
+				  }
+			})	
 			//判断用户是否授权
-			// #ifdef MP-WEIXIN
-            uni.getSetting({
-             success(res) {
-                console.log("授权：",res);
-               if (!res.authSetting['scope.userInfo']) {
-				  console.log("未授权");
-               } else {
-                    //用户已经授权过了
-                    console.log("当前已授权");
-               }
-             }
-           })
-           //#endif		
+			AUTH.checkAndAuthorize().then(isAuthor => {})
 		},
 		methods: {
+			//测试跳转
+			toadress(){
+				uni.navigateTo({
+					url:'../adress_add/adress_add'
+				})
+			},
 			//微信授权登录获取
 			appLoginWx(){
 				// #ifdef MP-WEIXIN
@@ -85,71 +94,50 @@
 					uni.getProvider({
 					  service: 'oauth',
 					  success: function (res) {
-					  console.log(res)
 					  if (~res.provider.indexOf('weixin')) {
-						uni.login({ //请求微信登录接口，获取code
-							provider: 'weixin',
-							success: (res) => {
-								var code = res.code;
-								console.log(code)
-								uni.getUserInfo({
-									provider: 'weixin',
-									success: (info) => {
-										//这里请求登录接口，传code给后台
-										console.log(info);
-										var that = this
-									    var nickName = info.userInfo.nickName
-									    var icon = info.userInfo.avatarUrl
-										console.log(nickName)
-										uni.request({
-											url:'http://112.74.86.165:8082/wechatLogin',
-											method:'POST',
-											data:{
-												code:code,
-												nickName:nickName,
-												icon:icon
-											},
-											success(result) {
-												console.log(result)
-												var that = this
-												 if(result.data.data.companyId == ''){
-													 uni.showToast({
-													 	title:'登录成功，请先编辑个人信息',
-													 	icon:'none'
-													 })
-													 uni.navigateTo({
-													 	url:'./edit'
-													 })
-												 }else{
-													 var that = this
-													 uni.setStorage({
-													 	key:'token',
-													 	data:{
-													 		token: result.data.data.token,
-													 		nickName:nickName,
-													 		icon:icon,
-													 		name: result.data.data.name,
-													 		sex: result.data.data.sex,
-													 		phone: result.data.data.phone,
-													 		companyId: result.data.data.companyId,
-													 	},
-													 })
-												 }
-											},		
-										})
-									},
-									fail: () => {
-										uni.showToast({title:"微信登录授权失败",icon:"none"});
+						  AUTH.wxaCode().then(code =>{
+							  AUTH.getUserInfo().then(info =>{
+							      var that = this
+								  console.log(info)
+								  var nickName = info.userInfo.nickName
+								  var icon = info.userInfo.avatarUrl
+									var data = {
+										code:code,
+										nickName: nickName,
+										icon:icon 
 									}
+									console.log(data)
+									 WXAPI.wxlogin(data).then(function (result) {
+										console.log(result.data)
+										 if(result.data.companyId == ''){
+											 uni.showToast({
+												title:'登录成功，请先编辑个人信息',
+												icon:'none'
+											 })
+											 uni.navigateTo({
+												url:'./edit'
+											 })
+										 }else{
+											 var that = this
+											 uni.setStorage({
+												key:'token',
+												data:{
+													token: result.data.token,
+													nickName:nickName,
+													icon:icon,
+													name: result.data.name,
+													sex: result.data.sex,
+													phone: result.data.phone,
+													companyId: result.data.companyId,
+												},
+											 })
+										 }
+									})
+									
 								})
-						
-							},
-							fail: () => {
-								uni.showToast({title:"微信登录授权失败",icon:"none"});
-							}
-						})
-							
-						}else{
+						  })
+						  }
+						else{
 							uni.showToast({
 								title: '请先安装微信或升级版本',
 								icon:"none"
@@ -160,25 +148,6 @@
 					//#endif
 				},
 			
-			// 获取企业号id
-			getID(){
-				var that = this
-				uni.getStorage({
-					key:'token',	
-					success: function (res) {
-						that.id = res.data.companyId
-					},
-					fail(result) {
-						uni.showToast({
-							title:'登录成功，请先编辑个人信息',
-							icon:'none'
-						})
-						uni.navigateTo({
-							url:'./edit'
-						})
-					}
-				})
-			},
 			//编辑个人资料
 			edit(){
 				uni.navigateTo({
@@ -205,9 +174,9 @@
 			},
 			//提交反馈
 			toSfeedback(){
-					uni.navigateTo({
-						url:'./feedback/feedback'
-					})
+				uni.navigateTo({
+					url:'./feedback/feedback'
+				})
 			}
 		}
 	}

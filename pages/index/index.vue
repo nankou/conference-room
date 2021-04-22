@@ -81,7 +81,7 @@
 			endDate() {
 				return this.getDate('end');
 			}
-		    },
+		},
 		methods: {
 			//获取token
 			getToken(){
@@ -111,7 +111,6 @@
 						Authorization:that.token
 					},
 					success(res) {
-						console.log(res)
 						that.conferenceList = [...that.conferenceList,...res.data.data.list]
 						if(that.conferenceList.length > 5){
 							that.flag = true
@@ -128,7 +127,6 @@
 			//日期选择
 			bindDateChange: function(e) {
 				this.date = e.target.value
-				console.log(this.date)
 				
 			},
 			//取消日期选择

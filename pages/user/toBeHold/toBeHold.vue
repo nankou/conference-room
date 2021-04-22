@@ -72,8 +72,6 @@
 			//撤销预约时间
 			toUndo(id){
 				var that = this;				
-				console.log(id)
-				console.log(that.token)
 				uni.request({
 					url:'http://112.74.86.165:8082/revocation',
 					method:'PUT',
@@ -99,7 +97,6 @@
 					url:'../update/update?id='+id+'&'+'meetingName='+meetingName+'&'+'meetingRoomId='+meetingRoomId+'&'+'phone='+phone+'&'+'name='+name+'&'+'time='+time
 				})
 			}
-			
 		}
 	}
 </script>

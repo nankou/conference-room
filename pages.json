@@ -1,11 +1,5 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		// {
-		//     "path" : "pages/user/test/test",
-		//     "style" : {
-		// 		"navigationBarTitleText": "个人中心"
-		// 	}
-		// },
 		{
 		    "path" : "pages/user/user",
 		    "style" : {
@@ -118,6 +112,12 @@
 			}
         }
        
+        ,{
+            "path" : "pages/adress_add/adress_add",
+            "style" : {
+				"navigationBarTitleText": "签到中心"
+			}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
@@ -127,7 +127,7 @@
 	},
 	"tabBar": {
 		"color": "#C0C4CC",
-		"selectedColor": "#fa436a",
+		"selectedColor": "#6799ff",
 		"borderStyle": "black",
 		"backgroundColor": "#ffffff",
 		"list": [{

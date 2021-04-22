@@ -52,7 +52,6 @@
 			uni.getStorage({
 				key:'token',
 				success(res) {
-					console.log(res)
 					that.name = res.data.name
 					that.phone = res.data.phone
 					if(res.data.sex == true){
@@ -90,7 +89,6 @@
 				uni.getStorage({
 					key:'token',	
 				   success: function (res) {
-					   console.log(res)
 					   that.icon = res.data.icon,
 					   that.nickName = res.data.nickName
 					   that.token = res.data.token
@@ -105,8 +103,6 @@
 			//上传个人信息
 			toUp(nickName,icon){
 				var that = this
-				console.log(nickName)
-				console.log(icon)
 				if(this.name == undefined || this.gender == undefined || this.phone == undefined || this.ID == undefined){
 					uni.showToast({
 					    title: '输入内容不能为空',
@@ -128,7 +124,6 @@
 						Authorization:that.token
 					},
 					success(res) {
-						console.log(res)
 						wx.setStorage({
 							key:'companyId',
 							data:{	

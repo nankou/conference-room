@@ -24,7 +24,7 @@
         },
 		onLoad() {
 			//获取是否授权
-						// #ifdef MP-WEIXIN
+			// #ifdef MP-WEIXIN
 			 uni.getSetting({
 			  success(res) {
 			     console.log("授权：",res);
@@ -37,25 +37,21 @@
 			    }
 			  }
 			})
+			 //#endif
 		},
         methods: {
-			
-           //#endif
+          
           appLoginWx(){
 			  // #ifdef MP-WEIXIN
-			  
 				  uni.getProvider({
-						
 					service: 'oauth',
 					success: function (res) {
-						
 					  if (~res.provider.indexOf('weixin')) {
 						  uni.login({
 							  provider: 'weixin',
 							  success: (res) => {
 								  var code = res.code;
 								  console.log(code)
-								  
 								  uni.getUserInfo({
 									  provider: 'weixin',
 									  success: (info) => {//这里请求接口
